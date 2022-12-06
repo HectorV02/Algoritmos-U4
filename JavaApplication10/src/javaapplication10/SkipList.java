@@ -23,7 +23,6 @@ public class SkipList {
         if (posicion.key == key) {
             return posicion;
         }
-
         do {
             nivel++;
             heads++;
@@ -40,8 +39,9 @@ public class SkipList {
             Nodo anteriorNuevo = posicion.abajo.abajo;
             agregaReferencias(q, nuevo, posicion, key, anteriorNuevo);
             q = nuevo;
+            q.item = item;
         } while (r.nextBoolean() == true);
-        q.item = item;
+        
         return q;
     }
 
@@ -80,7 +80,7 @@ public class SkipList {
             impreso = impreso.sigte;
         }
         while (impreso.key <= end) {
-            System.out.println(impreso);
+            System.out.println(impreso.key + ", " + impreso.item);
             if (impreso.sigte != null) {
                 impreso = impreso.sigte;
             }
