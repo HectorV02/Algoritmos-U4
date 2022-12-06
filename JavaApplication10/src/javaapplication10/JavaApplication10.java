@@ -12,13 +12,48 @@ public class JavaApplication10 {
             System.out.print("\nOpcion 0: AVL\nOpcion 1: SkipList\nOpcion 2: Salir\nIngrese opcion: ");
             m = sc.nextInt();
             if (m == 0) {
-
+                AVL avl = new AVL();
+                opcion = "";
+                while(!"e".equals(opcion)){
+                    System.out.print("\nOpcion i: insert\nOpcion d: remove\nOpcion f: find\nOpcion r: findRange\nOpcion h: height\nOpcion s: toStrig\nOpcion e: exit\nIngrese opcion: ");
+                    opcion = sc.next();
+                    if ("i".equals(opcion)) {
+                        System.out.print("Ingrese key: ");
+                        key = sc.nextInt();
+                        System.out.print("Ingrese item: ");
+                        item = sc.next();
+                        avl.insert(key, item);
+                    } else if ("d".equals(opcion)) {
+                        System.out.print("Ingrese key: ");
+                        key = sc.nextInt();
+                        avl.remove(key);
+                    } else if ("f".equals(opcion)) {
+                        System.out.print("Ingrese key: ");
+                        key = sc.nextInt();
+                        System.out.println(avl.find(key).head.data);
+                    } else if ("r".equals(opcion)) {
+                        System.out.print("Ingrese begin: ");
+                        begin = sc.nextInt();
+                        System.out.print("Ingrese end: ");
+                        end = sc.nextInt();
+                        avl.findRange(begin, end);
+                    } else if ("h".equals(opcion)) {
+                        System.out.print("Ingrese key: ");
+                        key = sc.nextInt();
+                        avl.heigth(key);
+                    } else if ("s".equals(opcion)) {
+                        System.out.println(avl.toString());
+                    } else if("e".equals(opcion)){
+                    }else{
+                        System.out.println("Opcion incorrecta");
+                    }
+                }
             } else if (m == 1) {
                 SkipList sl = new SkipList();
                 opcion = "";
                 while (!"e".equals(opcion)) {
                     System.out.print("\nOpcion i: insert\nOpcion d: remove\nOpcion f: find\nOpcion r: findRange\nOpcion h: height\nOpcion s: toStrig\nOpcion e: exit\nIngrese opcion: ");
-                    opcion = sc.next(); //cambiar
+                    opcion = sc.next();
                     if ("i".equals(opcion)) {
                         System.out.print("Ingrese key: ");
                         key = sc.nextInt();
