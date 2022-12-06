@@ -57,10 +57,7 @@ public class SkipList {
                     break;
                 }
             }
-            //System.out.println("ELIMINADO CORRECTAMENTE");
-        } //else {
-//            System.out.println("NO ENCONTRADO");
-//        }
+        }
     }
 
     public Nodo find(int key) {
@@ -88,7 +85,7 @@ public class SkipList {
     }
 
     public int height(int key) {
-        int alturaNodo = 0; //puede ser 0 o -1
+        int alturaNodo = -1; //puede ser 0 o -1
         Nodo encontrado = find(key);
         if (encontrado.key == key) {
             alturaNodo++;

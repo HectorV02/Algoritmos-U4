@@ -1,14 +1,13 @@
 package javaapplication10;
 
 import java.util.Scanner;
-import javax.swing.JOptionPane;
 
 public class JavaApplication10 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int m=0, key, begin, end;
-        String opcion="", item;
+        String opcion, item;
         while (m!=2) {
             System.out.print("\nOpcion 0: AVL\nOpcion 1: SkipList\nOpcion 2: Salir\nIngrese opcion: ");
             m = sc.nextInt();
@@ -16,6 +15,7 @@ public class JavaApplication10 {
 
             } else if (m == 1) {
                 SkipList sl = new SkipList();
+                opcion = "";
                 while (!"e".equals(opcion)) {
                     System.out.print("\nOpcion i: insert\nOpcion d: remove\nOpcion f: find\nOpcion r: findRange\nOpcion h: height\nOpcion s: toStrig\nOpcion e: exit\nIngrese opcion: ");
                     opcion = sc.next(); //cambiar
@@ -49,12 +49,12 @@ public class JavaApplication10 {
                         System.out.println(sl.toString());
                     } else if("e".equals(opcion)){
                     }else{
-                        JOptionPane.showMessageDialog(null, "Opcion incorrecta");
+                        System.out.println("Opcion incorrecta");
                     }
                 }
             } else if(m == 2){
             }else{
-                JOptionPane.showMessageDialog(null, "Opcion incorrecta");
+                System.out.println("Opcion incorrecta");
             }
         }
 
