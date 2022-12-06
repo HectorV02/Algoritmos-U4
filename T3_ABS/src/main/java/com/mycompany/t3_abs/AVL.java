@@ -344,12 +344,10 @@ public class AVL {
     }
     public void findRange(int str,int end){
         AVL[] ar = new AVL[end-str+1];
+        System.out.println("encontrados:");
         for (int i = str,j=0; i <= end; i++ ,j++) {
             ar[j] = find(i);
-        }
-        System.out.println("encontrados:");
-        for (int i = 0; i < ar.length; i++) {
-            if (ar[i] != null) {
+            if (ar[j] != null) {
                 System.out.println(ar[i].head.key);
             }
         }
@@ -415,5 +413,21 @@ public class AVL {
             System.out.println(find(key).heigth);
         }
         
+    }
+    
+    public String toStriing(){
+        String word = "";
+        if (left == null && right == null) {
+            word = "key: "+head.key+" item: "+head.data+" altura: "+heigth+"\n";
+            return word;
+        }
+        if (left != null) {
+            word = word + left.toStriing();
+        }
+        if (right != null) {
+            word = word +right.toStriing();
+        }
+        word = word + "key: "+head.key+" item: "+head.data+" altura: "+heigth+"\n";
+        return word;
     }
 }

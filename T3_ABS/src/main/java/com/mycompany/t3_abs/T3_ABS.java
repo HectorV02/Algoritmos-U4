@@ -22,7 +22,7 @@ public class T3_ABS {
 //        nw.insert(7, "idk");
 //        nw.insert(6, "desbalance");
 //        System.out.println(nw.left.heigth);
-
+        System.out.println(nw.toStriing());
         //buscar
         if (nw.find(6)!= null) {
             System.out.println(nw.find(6).head.key);
@@ -38,6 +38,6 @@ public class T3_ABS {
         }else{
             System.out.println(nw.head.key);
         }
-        
+        System.out.println(nw.toStriing());
     }
 }
