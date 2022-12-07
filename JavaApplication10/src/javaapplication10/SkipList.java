@@ -5,7 +5,6 @@ import java.util.Random;
 public class SkipList {
 
     public Nodo head, tail;
-    private Random r = new Random();
     private int altura = 0;
 
     public SkipList() {
@@ -16,6 +15,7 @@ public class SkipList {
     }
 
     public Nodo insert(int key, String item) {
+        Random r = new Random();
         Nodo posicion = find(key);
         Nodo q;
         int nivel = -1;
@@ -100,25 +100,22 @@ public class SkipList {
     @Override
     public String toString() {
         String sb = "";
-        //Nodo comienzo = head;
-        if (head.abajo != null) {
-            Nodo comienzo = head.abajo.sigte;
-            Nodo maxNivel = comienzo;
-            int nivel = altura;
-            while (maxNivel != null) {
-                sb += "\nNivel: " + nivel + "\n";
-                while (comienzo.sigte != null) {
-                    sb += comienzo.item + ", " + comienzo.key;
-                    if (comienzo.sigte != null && comienzo.sigte.key != tail.key) {
-                        sb += " : ";
-                        //sb += "\n";
-                    }
-                    comienzo = comienzo.sigte;
+        Nodo comienzo = head;
+        Nodo maxNivel = comienzo;
+        int nivel = altura;
+        while (maxNivel != null) {
+            sb += "\nNivel: " + nivel + "\n";
+            while (comienzo != null) {
+                sb += comienzo.item + ", " + comienzo.key;
+                if (comienzo.sigte != null) {
+                    sb += " : ";
+                    //sb += "\n";
                 }
-                maxNivel = maxNivel.abajo;
-                comienzo = maxNivel;
-                nivel--;
+                comienzo = comienzo.sigte;
             }
+            maxNivel = maxNivel.abajo;
+            comienzo = maxNivel;
+            nivel--;
         }
         return sb;
     }
