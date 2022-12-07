@@ -30,7 +30,10 @@ public class JavaApplication10 {
                     } else if ("f".equals(opcion)) {
                         System.out.print("Ingrese key: ");
                         key = sc.nextInt();
-                        System.out.println(avl.find(key).head.data);
+                        AVL aux = avl.find(key);
+                        if(aux != null){
+                            System.out.println(aux.head.data + ", " + aux.head.key);
+                        }
                     } else if ("r".equals(opcion)) {
                         System.out.print("Ingrese begin: ");
                         begin = sc.nextInt();
@@ -92,17 +95,6 @@ public class JavaApplication10 {
                 System.out.println("Opcion incorrecta");
             }
         }
-
-//        SkipList sl = new SkipList();
-//        
-//        sl.insert(6, "");
-//        sl.insert(15, "");
-//        sl.insert(4, "");
-//        
-//        System.out.println(sl.toString());
-//        
-//        sl.remove(4);
-//        System.out.println(sl.toString());
     }
 
 }

@@ -41,7 +41,7 @@ public class SkipList {
             q = nuevo;
             q.item = item;
         } while (r.nextBoolean() == true);
-        
+
         return q;
     }
 
@@ -72,20 +72,20 @@ public class SkipList {
     }
 
     public void findRange(int begin, int end) {
-        Nodo impreso = find(begin);
-        if (impreso.key < begin) {
-            impreso = impreso.sigte;
+        Nodo aux = find(begin);
+        if (aux.key < begin) {
+            aux = aux.sigte;
         }
-        while (impreso.key <= end) {
-            System.out.println(impreso.key + ", " + impreso.item);
-            if (impreso.sigte != null) {
-                impreso = impreso.sigte;
+        while (aux.key <= end) {
+            System.out.println(aux.key + ", " + aux.item);
+            if (aux.sigte != null) {
+                aux = aux.sigte;
             }
         }
     }
 
     public int height(int key) {
-        int alturaNodo = -1; //puede ser 0 o -1
+        int alturaNodo = -1;
         Nodo encontrado = find(key);
         if (encontrado.key == key) {
             alturaNodo++;
@@ -100,22 +100,25 @@ public class SkipList {
     @Override
     public String toString() {
         String sb = "";
-        Nodo comienzo = head;
-        Nodo maxNivel = comienzo;
-        int nivel = altura;
-        while (maxNivel != null) {
-            sb += "\nNivel: " + nivel + "\n";
-            while (comienzo != null) {
-                sb += comienzo.item + ", " + comienzo.key;
-                if (comienzo.sigte != null) {
-                    sb += " : ";
-                    //sb += "\n";
+        //Nodo comienzo = head;
+        if (head.abajo != null) {
+            Nodo comienzo = head.abajo.sigte;
+            Nodo maxNivel = comienzo;
+            int nivel = altura;
+            while (maxNivel != null) {
+                sb += "\nNivel: " + nivel + "\n";
+                while (comienzo.sigte != null) {
+                    sb += comienzo.item + ", " + comienzo.key;
+                    if (comienzo.sigte != null && comienzo.sigte.key != tail.key) {
+                        sb += " : ";
+                        //sb += "\n";
+                    }
+                    comienzo = comienzo.sigte;
                 }
-                comienzo = comienzo.sigte;
+                maxNivel = maxNivel.abajo;
+                comienzo = maxNivel;
+                nivel--;
             }
-            maxNivel = maxNivel.abajo;
-            comienzo = maxNivel;
-            nivel--;
         }
         return sb;
     }

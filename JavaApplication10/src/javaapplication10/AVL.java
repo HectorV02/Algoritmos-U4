@@ -334,15 +334,12 @@ public class AVL {
             }
         }
     }
-    public void findRange(int str,int end){ //imprimir altiro en vez de guardar en arreglo
-        AVL[] ar = new AVL[end-str+1];
-        for (int i = str,j=0; i <= end; i++ ,j++) {
-            ar[j] = find(i);
-        }
+    public void findRange(int str,int end){
         System.out.println("encontrados:");
-        for (int i = 0; i < ar.length; i++) {
-            if (ar[i] != null) {
-                System.out.println(ar[i].head.data);
+        for (int i = str; i <= end; i++ ) {
+            AVL aux = find(i);
+            if (aux != null) {
+                System.out.println(aux.head.data + ", " + aux.head.key);
             }
         }
     }
@@ -406,6 +403,22 @@ public class AVL {
         }else{
             System.out.println(find(key).heigth);
         }
-        
     }
+    
+    @Override
+    public String toString(){ 
+        String word = ""; 
+        if (left == null && right == null) { 
+            word = "key: "+head.key+" item: "+head.data+" altura: "+heigth+"\n"; 
+            return word; 
+        } 
+        if (left != null) { 
+            word = word + left.toString(); 
+        } 
+        if (right != null) { 
+            word = word +right.toString(); 
+        } 
+        word = word + "key: "+head.key+" item: "+head.data+" altura: "+heigth+"\n"; 
+        return word; 
+    } 
 }
