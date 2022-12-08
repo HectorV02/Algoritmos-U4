@@ -49,13 +49,9 @@ public class SkipList {
         Nodo eliminado = find(key);
         if (eliminado.key == key) {
             eliminaReferencias(eliminado);
-            while (eliminado != null) {
+            while (eliminado.arriba != null) {
+                eliminado = eliminado.arriba;
                 eliminaReferencias(eliminado);
-                if (eliminado.arriba != null) {
-                    eliminado = eliminado.arriba;
-                } else {
-                    break;
-                }
             }
         }
     }
@@ -140,12 +136,8 @@ public class SkipList {
         q.sigte = nuevo;
 
         if (anteriorNuevo != null) {
-            while (true) {
-                if (anteriorNuevo.sigte.key != key) {
-                    anteriorNuevo = anteriorNuevo.sigte;
-                } else {
-                    break;
-                }
+            while (anteriorNuevo.sigte.key != key) {
+                anteriorNuevo = anteriorNuevo.sigte;
             }
             nuevo.abajo = anteriorNuevo.sigte;
             anteriorNuevo.sigte.arriba = nuevo;
